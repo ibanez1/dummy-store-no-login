@@ -32,17 +32,21 @@ export class LandingComponent implements OnInit, OnDestroy{
   ngOnInit() {
     LandingComponent.isBrowser.subscribe((isBrowser) => {
       if (isBrowser) {
-        this.isBorwser = true;
-        if(this.authService.isAuthenticated()){
+          this.isBorwser = true;
           this.isAuthenticated = true;
-          const user = this.authService.getUserInfo();
+          const user = {
+            email: 'dummyshopper@dummyshop.com',
+            firstName: 'John',
+            gender: 'male',
+            id: 1,
+            lastName: 'Doe',
+            token: 'anytoken',
+            username: 'dummyshopper',
+            image: 'https://xsgames.co/randomusers/avatar.php?g=male'
+          }
           this.store.dispatch(userActions.loginSuccess(user));
           this.router.navigate(['/home']);
         } else {
-          this.isAuthenticated = false;
-          this.router.navigate(['/login']);
-        }
-      } else {
         console.log('I am not a browser');
       }
     });

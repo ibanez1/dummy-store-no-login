@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Product } from '../store/product';
-import { lastValueFrom, map } from 'rxjs';
+import { map } from 'rxjs';
 
 
 interface ProductsResponse {
@@ -20,15 +20,15 @@ interface QueryParams {
 })
 export class ProductService {
   #http = inject(HttpClient);
-  #baseUrl = 'https://dummyjson.com/auth/products';
+  #baseUrl = 'https://dummyjson.com/products';
 
   load(queryParams: QueryParams) {
     const url = this.#baseUrl + `?limit=${queryParams.limit}&skip=${queryParams.skip}`;
-    const token = sessionStorage.getItem('token');
+    // const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*')
-    .set('Authorization', `Bearer ${token}`);
+    // .set('Authorization', `Bearer ${token}`);
     return this.#http.get<ProductsResponse>(url, { 'headers': headers }).pipe(map((data: ProductsResponse) => ({ ...data })));
   }
 
