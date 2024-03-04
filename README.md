@@ -5,13 +5,8 @@ DUMMY SHOP
 
 An Nx and Angular project 
 
-    username: kminchelle
-    pw: 0lelplR
-
 # Description
 
-Aa sign-in page to gain access to the list of products where only authorised user
-has access to this content.
 
 The product list page is the homepage and displays a list of
 products. Every product preview contains the thumbnail, the title, the description,
@@ -23,7 +18,6 @@ The favorite products page displays a list of favorite products for the current 
 - Nx monorepo
 - SSR: Native Angular server side rendering for First Contentful Paint (FCP) 
 - Netlify deployment
-- Login /Logout
 - Pagination
 - Ngrx Store for managing app state
 - Use of signals for better performance
@@ -33,14 +27,13 @@ The favorite products page displays a list of favorite products for the current 
 - On-Push strategy
 - Centralized service for app requests
 - Unit testing with Jest
-- Guard routes for unauthorixed users
 
     
 
 
 ## Demo
 
-https://dummyshopping.netlify.app
+https://dummyshopping2.netlify.app
 
 
 ## Tech Stack
@@ -58,29 +51,10 @@ https://dummyshopping.netlify.app
 ## API Reference
 https://dummyjson.com
 
-#### Login Access
-
-```http
-  POST /auth/login
-```
-
-fetch('https://dummyjson.com/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    
-    username: 'kminchelle',
-    password: '0lelplR',
-    // expiresInMins: 60, // optional
-  })
-})
-.then(res => res.json())
-.then(console.log);
-
 #### Get all products
 
 ```http
-  GET /auth/products
+  GET /products
 ```
 
 | header    | Type     | Description                |
@@ -93,9 +67,9 @@ ex: 'https://dummyjson.com/products?limit=10&skip=10&select=title,price'
 
 #### More endpoints
 
-Add Product → https://dummyjson.com/auth/products/add
-● Update Product → https://dummyjson.com/auth/products/{id}
-● Delete Product → https://dummyjson.com/auth/products/{id}
+Add Product → https://dummyjson.com/products/add
+● Update Product → https://dummyjson.com/products/{id}
+● Delete Product → https://dummyjson.com/products/{id}
 
 ## Running Tests
 
@@ -107,9 +81,6 @@ To run tests, run the following command
 
 
 ## Screenshots
-
-![App Login] 
-https://ibb.co/tK4wH4t
 
 ![App Porducts]
 https://ibb.co/cxm6LYn
